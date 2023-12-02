@@ -1,0 +1,15 @@
+class Solution:
+  def isIsomorphic(self,s, t):
+        mapST={}
+        mapTS={}
+     
+        for i in range(len(s)):
+          col1=s[i]
+          col2=t[i]
+
+          if ((col1 in mapST and mapST[col1]!=col2) or
+             (col2 in mapTS  and mapTS[col2]!=col1)) :          
+            return False
+          mapST[col1]=col2
+          mapTS[col2]=col1
+        return True
