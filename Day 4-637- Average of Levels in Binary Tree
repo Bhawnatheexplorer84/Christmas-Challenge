@@ -1,0 +1,19 @@
+class Solution(object):
+    def averageOfLevels(self, root):
+        S=defaultdict(float)
+        T=defaultdict(int)
+
+           
+
+        def dfs(node,h):
+            if not node : return
+            dfs(node.left,h+1)
+            dfs(node.right,h+1)
+            S[h]=S[h]+node.val
+            T[h]=T[h]+1
+            
+        dfs(root,0)
+        output=[]
+        for i in range(len(S)) :
+            output.append(S[i]/T[i])
+        return output
